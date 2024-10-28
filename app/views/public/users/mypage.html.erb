@@ -1,0 +1,8 @@
+<%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-danger' %>
+
+<%= @user.nick_name %>
+<%= @user.profile %>
+<%= I18n.t("activerecord.attributes.user.gender.#{@user.gender}") %>
+<%= @user.location %>
+<%= @user.birthday %>
+<%= @user.email %>

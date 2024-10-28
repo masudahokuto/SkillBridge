@@ -8,7 +8,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.integer :level, null: false, default: 0
       t.text :certifications
       t.text :profile
-      t.text :locations, null: false
+      t.string :location, null: false
       t.string :nick_name, null: false
       t.integer :gender, null: false, default: 0
       t.date :birthday, null: false
