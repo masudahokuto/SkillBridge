@@ -1,0 +1,15 @@
+<header class="custom-header py-3">
+  <div class="container-fluid d-flex justify-content-between">
+    <div class="row w-100">
+      <div class="col-sm-12 col-md-7 d-flex align-items-center">
+        <%= link_to edit_user_path(@user), style: "text-decoration: none;" do %>
+          <% if @user.profile_image.attached? %>
+            <%= image_tag user.profile_image, class: 'header-profile-image' %>
+          <% else %>
+            <%= image_tag 'no_image.jpg', class: 'header-profile-image' %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</header>
