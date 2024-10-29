@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'user_details/new'
+  get 'user_details/edit'
   devise_for :users,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
