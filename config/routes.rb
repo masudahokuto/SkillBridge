@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'portfolios/new'
+  get 'portfolios/edit'
+  get 'portfolios/show'
+  get 'portfolios/index'
   get 'user_details/new'
   get 'user_details/edit'
   devise_for :users,skip: [:passwords], controllers: {
