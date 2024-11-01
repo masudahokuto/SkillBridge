@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  get 'portfolios/new'
-  get 'portfolios/edit'
-  get 'portfolios/show'
-  get 'portfolios/index'
-  get 'user_details/new'
-  get 'user_details/edit'
   devise_for :users,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
@@ -26,8 +20,12 @@ Rails.application.routes.draw do
       collection do
         get 'mypage', to: 'users#mypage'
         patch 'withdraw'  # 退会処理
-      end      
+      end
     end
+
+    resources :user_details, only: %i[new create edit]
+
+    resources :portfolios
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

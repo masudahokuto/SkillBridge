@@ -1,0 +1,28 @@
+<%= form_with(model: @portfolio, local: true) do |f| %>
+  <div class="form-group">
+    <%= f.label :name, "ポートフォリオ名" %>
+    <%= f.text_field :name, class: "form-control", required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :content, "説明" %>
+    <%= f.text_area :content, class: "form-control", required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :portfolio_url, "ポートフォリオURL" %>
+    <%= f.url_field :portfolio_url, class: "form-control", required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :github_link, "GitHubリンク" %>
+    <%= f.url_field :github_link, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :visibility, "公開設定" %>
+    <%= f.select :visibility, [['公開', 'is_public'], ['非公開', 'is_private'], ['フォロワーのみ公開', 'followers_only']], {}, class: "form-control" %>
+  </div>
+
+  <%= f.submit "作成", class: "btn btn-primary" %>
+<% end %>

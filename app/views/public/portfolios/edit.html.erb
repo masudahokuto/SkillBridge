@@ -1,0 +1,46 @@
+<!-- app/views/public/portfolios/edit.html.erb -->
+<h1>ポートフォリオを編集</h1>
+
+<%= form_with model: @portfolio, local: true do |form| %>
+  <% if @portfolio.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@portfolio.errors.count, "error") %> prohibited this portfolio from being saved:</h2>
+
+      <ul>
+        <% @portfolio.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+
+  <div class="field">
+    <%= form.label :portfolio_url %>
+    <%= form.text_field :portfolio_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :github_link %>
+    <%= form.text_field :github_link %>
+  </div>
+
+  <div class="field">
+    <%= form.select :visibility, Portfolio.visibilities.keys.map { |v| [I18n.t("activerecord.attributes.portfolio.visibility.#{v}"), v] }, { include_blank: true } %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit '更新', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+<%= link_to 'キャンセル', portfolio_path(@portfolio), class: 'btn btn-secondary' %>

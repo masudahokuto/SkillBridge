@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_one_attached :profile_image
   enum gender: { male: 0, female: 1, other: 2 }
 
-
+  has_one :user_detail, dependent: :destroy
+  has_many :portfolios, dependent: :destroy
 end
 

@@ -2,12 +2,19 @@
   <div class="container-fluid d-flex justify-content-between">
     <div class="row w-100">
       <div class="col-sm-12 col-md-7 d-flex align-items-center">
-        <%= link_to edit_user_path(@user), style: "text-decoration: none;" do %>
-          <% if @user.profile_image.attached? %>
-            <%= image_tag @user.profile_image, class: 'header-profile-image' %>
-          <% else %>
-            <%= image_tag 'no_image.jpg', class: 'header-profile-image' %>
+        <% if user_signed_in? %> <!-- ログインしているか確認 -->
+          <%= link_to edit_user_path(current_user), style: "text-decoration: none;" do %> <!-- current_userを使用 -->
+            <% if current_user.profile_image.attached? %>
+              <%= image_tag current_user.profile_image, class: 'header-profile-image' %>
+            <% else %>
+              <%= image_tag 'no_image.jpg', class: 'header-profile-image' %>
+            <% end %>
           <% end %>
+        <% else %>
+          <div>
+            <%= link_to 'ログイン', new_user_session_path, class: 'btn btn-primary me-2' %>
+            <%= link_to '新規登録', new_user_registration_path, class: 'btn btn-secondary' %>
+          </div>
         <% end %>
       </div>
     </div>
