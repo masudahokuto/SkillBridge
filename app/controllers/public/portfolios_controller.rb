@@ -4,14 +4,16 @@ class Public::PortfoliosController < ApplicationController
     @portfolio = Portfolio.new
   end
 
-  def create
-    @portfolio = current_user.portfolios.build(portfolio_params)
-    if @portfolio.save
-      redirect_to @portfolio, notice: 'ポートフォリオが作成されました。'
-    else
-      render :new
-    end
+def create
+  @portfolio = current_user.portfolios.build(portfolio_params)
+  puts portfolio_params.inspect
+  if @portfolio.save
+    redirect_to @portfolio, notice: 'ポートフォリオが作成されました。'
+  else
+    @error_messages = @portfolio.errors.full_messages # エラーメッセージを取得
+    render :new
   end
+end
 
   def edit
   end
