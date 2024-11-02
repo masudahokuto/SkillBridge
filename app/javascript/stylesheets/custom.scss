@@ -6,6 +6,13 @@
 
 .action_text-field {
   width: 100%;
-  height: 100vh;
-  
+  min-height: 500px; /* 最小高さを500pxに設定 */
+  height: auto; /* 自動で高さを調整 */
+  overflow-y: auto; /* 必要に応じてスクロールを追加 */
+  resize: vertical; /* 縦方向にリサイズ可能にする */
+}
+
+.attachment__name,
+.attachment__size {
+  display: none;
 }

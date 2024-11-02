@@ -1,7 +1,7 @@
 <!-- app/views/public/portfolios/edit.html.erb -->
 <h1>ポートフォリオを編集</h1>
 
-<%= form_with model: @portfolio, local: true do |form| %>
+<%= form_with model: @portfolio, local: true do |f| %>
   <% if @portfolio.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@portfolio.errors.count, "error") %> prohibited this portfolio from being saved:</h2>
@@ -15,31 +15,32 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
   </div>
 
   <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
+    <%= f.label :portfolio_url %>
+    <%= f.text_field :portfolio_url %>
   </div>
 
   <div class="field">
-    <%= form.label :portfolio_url %>
-    <%= form.text_field :portfolio_url %>
+    <%= f.label :github_link %>
+    <%= f.text_field :github_link %>
   </div>
 
   <div class="field">
-    <%= form.label :github_link %>
-    <%= form.text_field :github_link %>
+    <%= f.select :visibility, Portfolio.visibilities.keys.map { |v| [I18n.t("activerecord.attributes.portfolio.visibility.#{v}"), v] }, { include_blank: true } %>
   </div>
 
-  <div class="field">
-    <%= form.select :visibility, Portfolio.visibilities.keys.map { |v| [I18n.t("activerecord.attributes.portfolio.visibility.#{v}"), v] }, { include_blank: true } %>
+
+  <div class="form-group">
+    <%= f.label :content, "説明" %>
+    <%= f.rich_text_area :content, class: "form-control action_text-field", required: true %>
   </div>
 
   <div class="actions">
-    <%= form.submit '更新', class: 'btn btn-primary' %>
+    <%= f.submit '更新', class: 'btn btn-primary' %>
   </div>
 <% end %>
 

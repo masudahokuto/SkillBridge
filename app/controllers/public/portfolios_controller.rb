@@ -18,6 +18,15 @@ end
   def edit
   end
 
+  def update
+    if @portfolio.update(portfolio_params)
+      redirect_to @portfolio, notice: 'ポートフォリオが作成されました。'
+    else
+      @error_messages = @portfolio.errors.full_messages # エラーメッセージを取得
+      render :edit
+    end
+  end
+
   def show
     @portfolio = Portfolio.find(params[:id])
     @user = @portfolio.user

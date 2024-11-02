@@ -1,6 +1,6 @@
 <p>name: <%= @portfolio.name %></p>
-<p>content: <%= @portfolio.content %></p> <!-- リッチテキストの内容を取得 -->
 <p>Portfolioリンク: <%= link_to @portfolio.portfolio_url, @portfolio.portfolio_url %></p>
 <p>GitHubリンク: <%= link_to @portfolio.github_link, @portfolio.github_link %></p>
 <p>visibility: <%= I18n.t("activerecord.attributes.portfolio.visibility.#{@portfolio.visibility}") %></p>
+<%= @portfolio.content.body.to_s.html_safe %>
 <%= link_to 'ポートフォリオを編集', edit_portfolio_path(@portfolio), class: 'btn btn-warning' %>
