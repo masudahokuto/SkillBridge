@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'skill_tags/index'
+  end
   devise_for :users,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
@@ -26,6 +29,8 @@ Rails.application.routes.draw do
     resources :user_details, only: %i[new create edit]
 
     resources :portfolios
+
+    resources :skill_tags, except: %i[index]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_11_02_004046) do
+ActiveRecord::Schema.define(version: 2024_11_03_082620) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -82,6 +82,15 @@ ActiveRecord::Schema.define(version: 2024_11_02_004046) do
     t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
   end
 
+  create_table "portfolio_taggings", force: :cascade do |t|
+    t.integer "portfolio_id", null: false
+    t.integer "skill_tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["portfolio_id"], name: "index_portfolio_taggings_on_portfolio_id"
+    t.index ["skill_tag_id"], name: "index_portfolio_taggings_on_skill_tag_id"
+  end
+
   create_table "portfolios", force: :cascade do |t|
     t.string "name", null: false
     t.string "portfolio_url", null: false
@@ -91,6 +100,13 @@ ActiveRecord::Schema.define(version: 2024_11_02_004046) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_portfolios_on_user_id"
+  end
+
+  create_table "skill_tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_skill_tags_on_name", unique: true
   end
 
   create_table "user_ditails", force: :cascade do |t|
@@ -103,6 +119,15 @@ ActiveRecord::Schema.define(version: 2024_11_02_004046) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_user_ditails_on_user_id"
+  end
+
+  create_table "user_taggings", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "skill_tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["skill_tag_id"], name: "index_user_taggings_on_skill_tag_id"
+    t.index ["user_id"], name: "index_user_taggings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -128,6 +153,10 @@ ActiveRecord::Schema.define(version: 2024_11_02_004046) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "portfolio_taggings", "portfolios"
+  add_foreign_key "portfolio_taggings", "skill_tags"
   add_foreign_key "portfolios", "users"
   add_foreign_key "user_ditails", "users"
+  add_foreign_key "user_taggings", "skill_tags"
+  add_foreign_key "user_taggings", "users"
 end

@@ -8,5 +8,6 @@ class User < ApplicationRecord
 
   has_one :user_detail, dependent: :destroy
   has_many :portfolios, dependent: :destroy
+  has_many :skill_tags, through: :usertaggings
 end
 
