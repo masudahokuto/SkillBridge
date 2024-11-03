@@ -20,7 +20,6 @@
 .skill-card {
   border: 1px solid #ddd;
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .skill-card:hover {
@@ -33,8 +32,11 @@
 }
 
 .skill-card-title {
-  // font-size: 1.25rem;
-  // margin-bottom: 0.75rem;
+  width: 100%;
+  margin-top: .2rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .skill-card-image {
@@ -42,4 +44,10 @@
   height: 40px;
   border-radius: 50%;
   object-fit: cover;
+}
+
+.CardList {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 1.4rem;
 }

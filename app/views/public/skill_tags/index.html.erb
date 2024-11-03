@@ -1,14 +1,18 @@
-<div class="d-flex flex-wrap justify-content-center">
-  <% @skill_tags.each do |tag| %>
-    <div class="skill-card" style="width: 10rem; margin: 1rem;">
-      <div class="skill-card-body">
-        <% if tag.skill_tag_image.attached? %>
-          <%= image_tag tag.skill_tag_image, class: "skill-card-image", alt: tag.name %>
-        <% else %>
-          <p class="card-text">No image attached</p>
-        <% end %>
-        <h5 class="skill-card-title"><%= tag.name %></h5>
-      </div>
+<div class="container-fluid">
+  <div class="row d-flex justify-content-center">
+    <div class="CardList">
+      <% @skill_tags.each do |tag| %>
+        <div class="skill-card" style="width: 10rem;">
+          <div class="skill-card-body">
+            <% if tag.skill_tag_image.attached? %>
+              <%= image_tag tag.skill_tag_image, class: "skill-card-image", alt: tag.name %>
+            <% else %>
+              <p class="card-text">No image attached</p>
+            <% end %>
+            <div class="skill-card-title"><%= tag.name %></div>
+          </div>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 </div>
