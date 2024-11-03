@@ -1,2 +1,14 @@
-<h1>Public::SkillTags#index</h1>
-<p>Find me in app/views/public/skill_tags/index.html.erb</p>
+<div class="d-flex flex-wrap justify-content-center">
+  <% @skill_tags.each do |tag| %>
+    <div class="skill-card" style="width: 10rem; margin: 1rem;">
+      <div class="skill-card-body">
+        <% if tag.skill_tag_image.attached? %>
+          <%= image_tag tag.skill_tag_image, class: "skill-card-image", alt: tag.name %>
+        <% else %>
+          <p class="card-text">No image attached</p>
+        <% end %>
+        <h5 class="skill-card-title"><%= tag.name %></h5>
+      </div>
+    </div>
+  <% end %>
+</div>

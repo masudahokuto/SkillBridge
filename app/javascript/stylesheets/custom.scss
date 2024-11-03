@@ -16,3 +16,30 @@
 .attachment__size {
   display: none;
 }
+
+.skill-card {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.skill-card:hover {
+  background-color: #e4edf4;
+}
+
+.skill-card-body {
+  padding: 1rem;
+  text-align: center;
+}
+
+.skill-card-title {
+  // font-size: 1.25rem;
+  // margin-bottom: 0.75rem;
+}
+
+.skill-card-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}

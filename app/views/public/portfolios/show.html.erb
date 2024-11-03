@@ -4,3 +4,4 @@
 <p>visibility: <%= I18n.t("activerecord.attributes.portfolio.visibility.#{@portfolio.visibility}") %></p>
 <%= @portfolio.content.body.to_s.html_safe %>
 <%= link_to 'ポートフォリオを編集', edit_portfolio_path(@portfolio), class: 'btn btn-warning' %>
+<%= link_to "マイページ", mypage_users_path, class: 'btn btn-info' %>
