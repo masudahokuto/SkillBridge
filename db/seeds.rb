@@ -1,9 +1,9 @@
 skill_tags = [
+  { name: '機械学習', image_path: Rails.root.join('app/assets/images/skill_logo/AI-Learning.png') },
+  { name: 'AI', image_path: Rails.root.join('app/assets/images/skill_logo/AI.png') },
   { name: 'Ruby', image_path: Rails.root.join('app/assets/images/skill_logo/ruby.png') },
   { name: 'Rails', image_path: Rails.root.join('app/assets/images/skill_logo/rails.png') },
-  { name: 'AI', image_path: Rails.root.join('app/assets/images/skill_logo/AI.png') },
-  { name: '機械学習', image_path: Rails.root.join('app/assets/images/skill_logo/AI-Learning.png') },
-  { name: 'Android', image_path: Rails.root.join('app/assets/images/skill_logo/aws.png') },
+  { name: 'Android', image_path: Rails.root.join('app/assets/images/skill_logo/android.png') },
   { name: 'AWS', image_path: Rails.root.join('app/assets/images/skill_logo/aws.png') },
   { name: 'AtCoder', image_path: Rails.root.join('app/assets/images/skill_logo/at-coder.png') },
   { name: 'Azure', image_path: Rails.root.join('app/assets/images/skill_logo/azure.png') },
@@ -52,7 +52,13 @@ skill_tags = [
   { name: 'Unity', image_path: Rails.root.join('app/assets/images/skill_logo/unity.png') },
   { name: 'VS Code', image_path: Rails.root.join('app/assets/images/skill_logo/vs-code.png') },
   { name: 'Vue.js', image_path: Rails.root.join('app/assets/images/skill_logo/vue-js.png') },
-  { name: 'Web', image_path: Rails.root.join('app/assets/images/skill_logo/web.jpeg') }
+  { name: 'Web', image_path: Rails.root.join('app/assets/images/skill_logo/web.jpeg') },
+  { name: 'C#', image_path: Rails.root.join('app/assets/images/skill_logo/c#.png') },
+  { name: 'HTML', image_path: Rails.root.join('app/assets/images/skill_logo/html.png') },
+  { name: 'macOS', image_path: Rails.root.join('app/assets/images/skill_logo/macOS.png') },
+  { name: 'Terraform', image_path: Rails.root.join('app/assets/images/skill_logo/Terraform.jpeg') },
+  { name: 'Windows', image_path: Rails.root.join('app/assets/images/skill_logo/windows.jpeg') },
+  { name: 'API', image_path: Rails.root.join('app/assets/images/skill_logo/api.png') }
 ]
 
 # SkillTagを作成または取得
