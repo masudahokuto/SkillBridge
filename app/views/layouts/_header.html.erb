@@ -2,14 +2,17 @@
   <div class="container-fluid d-flex justify-content-between">
     <div class="row w-100">
       <div class="col-sm-12 col-md-7 d-flex align-items-center">
-        <% if user_signed_in? %> <!-- ログインしているか確認 -->
-          <%= link_to edit_user_path(current_user), style: "text-decoration: none;" do %> <!-- current_userを使用 -->
-            <% if current_user.profile_image.attached? %>
-              <%= image_tag current_user.profile_image, class: 'header-profile-image' %>
-            <% else %>
-              <%= image_tag 'no_image.jpg', class: 'header-profile-image' %>
-            <% end %>
-          <% end %>
+        <% if user_signed_in? %>
+          <div class="dropdown">
+            <%= image_tag(current_user.profile_image.attached? ? current_user.profile_image : 'no_image.jpg', class: 'header-profile-image', id: 'dropdownToggle') %>
+            <div class="dropdown-menu" id="dropdownMenu">
+              <a class="dropdown-item" href="<%= mypage_users_path %>" data-turbolinks="false"><%= current_user.nick_name %></a>
+              <a class="dropdown-item" href="<%= new_portfolio_path %>" data-turbolinks="false">ポートフォリオを作成</a>
+              <a class="dropdown-item" href="<%= edit_user_path(current_user) %>" data-turbolinks="false">ユーザーを編集</a>
+              <div class="dropdown-divider"></div>
+              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
+            </div>
+          </div>
         <% else %>
           <div>
             <%= link_to 'ログイン', new_user_session_path, class: 'btn btn-primary me-2' %>
