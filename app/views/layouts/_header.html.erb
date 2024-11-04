@@ -6,7 +6,10 @@
           <div class="dropdown">
             <%= image_tag(current_user.profile_image.attached? ? current_user.profile_image : 'no_image.jpg', class: 'header-profile-image', id: 'dropdownToggle') %>
             <div class="dropdown-menu" id="dropdownMenu">
-              <a class="dropdown-item" href="<%= mypage_users_path %>" data-turbolinks="false"><%= current_user.nick_name %></a>
+              <a class="dropdown-item" href="<%= mypage_users_path %>" data-turbolinks="false">
+                <i class="fa-solid fa-user" style="margin-right: 8px;"></i>
+                <%= current_user.nick_name %>
+              </a>
               <a class="dropdown-item" href="<%= new_portfolio_path %>" data-turbolinks="false">ポートフォリオを作成</a>
               <a class="dropdown-item" href="<%= edit_user_path(current_user) %>" data-turbolinks="false">ユーザーを編集</a>
               <div class="dropdown-divider"></div>
