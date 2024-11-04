@@ -1,6 +1,6 @@
 <%= f.label :skill_tag_ids, "スキルタグ" %>
 <div class="form-group check-tag-all d-flex flex-wrap">
-  <%= f.collection_check_boxes :skill_tag_ids, SkillTag.all, :id, :name do |b| %>
+  <%= f.collection_check_boxes :skill_tag_ids, skill_tags, :id, :name do |b| %>
     <div class="tag-item d-flex align-items-center">
       <div class="form-check-box">
         <%= b.check_box %>

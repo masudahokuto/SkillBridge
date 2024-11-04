@@ -2,6 +2,7 @@ class Public::PortfoliosController < ApplicationController
   before_action :set_portfolio, only: [:edit, :update, :destroy]
   def new
     @portfolio = Portfolio.new
+    @skill_tags = SkillTag.by_usage
   end
 
 def create
