@@ -1,0 +1,15 @@
+<div class="portfolio-show-content">
+  <div class="form-group check-tag-all d-flex flex-wrap">
+    <% portfolio.skill_tags.each do |skill_tag| %>
+      <div class="tag-item d-flex align-items-center">
+        <div class="skill_tag d-flex align-items-center">
+          <% if skill_tag.skill_tag_image.attached? %>
+            <%= image_tag skill_tag.skill_tag_image, class: "skill-tag-image rounded-circle", alt: skill_tag.name %>
+          <% end %>
+          <span class="form-check-label skill-tag-label ms-2"><%= skill_tag.name %></span>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <%= portfolio.content.body.to_s.html_safe %>
+</div>

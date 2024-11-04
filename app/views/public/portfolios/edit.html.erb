@@ -34,21 +34,7 @@
   </div>
 
   <%= f.label :skill_tag_ids, "スキルタグ" %>
-  <div class="form-group check-tag-all d-flex flex-wrap">
-    <%= f.collection_check_boxes :skill_tag_ids, SkillTag.all, :id, :name do |b| %>
-      <div class="tag-item d-flex align-items-center">
-        <div class="form-check-box">
-          <%= b.check_box %>
-        </div>
-        <div class="skill_tag d-flex align-items-center">
-          <% if b.object.skill_tag_image.attached? %>
-            <%= image_tag b.object.skill_tag_image, class: "skill-tag-image rounded-circle", alt: b.object.name %>
-          <% end %>
-          <%= b.label(class: "form-check-label skill-tag-label ms-2") %>
-        </div>
-      </div>
-    <% end %>
-  </div>
+  <%= render 'skill_tags', f: f %>
 
   <div class="form-group">
     <%= f.label :content, "説明" %>
