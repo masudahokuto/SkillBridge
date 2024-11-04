@@ -23,6 +23,7 @@ class Public::UsersController < ApplicationController
 
   def mypage
     @user = current_user
+    @portfolios = @user.portfolios
   end
 
   private

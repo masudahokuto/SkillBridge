@@ -7,10 +7,11 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
+import Trix from "trix";
+import "@rails/actiontext";
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-require("trix")
-require("@rails/actiontext")
+import { trix } from "trix/dist/trix";

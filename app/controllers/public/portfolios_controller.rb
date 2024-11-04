@@ -20,7 +20,7 @@ end
 
   def update
     if @portfolio.update(portfolio_params)
-      redirect_to @portfolio, notice: 'ポートフォリオが作成されました。'
+      redirect_to @portfolio, notice: 'ポートフォリオが更新されました。'
     else
       @error_messages = @portfolio.errors.full_messages # エラーメッセージを取得
       render :edit
@@ -42,6 +42,6 @@ end
   end
 
   def portfolio_params
-    params.require(:portfolio).permit(:name, :content, :portfolio_url, :github_link, :visibility)
+    params.require(:portfolio).permit(:name, :content, :portfolio_url, :github_link, :visibility, skill_tag_ids: [])
   end
 end

@@ -1,0 +1,31 @@
+ja:
+  trix:
+    caption_placeholder: "キャプションを追加"
+    captions:
+      attachment_deleted: "添付ファイルは削除されました。"
+      attachment_missing: "この添付ファイルは見つかりませんでした。"
+    dialogs:
+      file:
+        dismiss: "キャンセル"
+        save: "保存"
+    errors:
+      missing_attachment: "添付ファイルが見つかりません。"
+      missing_caption: "キャプションが見つかりません。"
+    toolbars:
+      actions:
+        bold: "太字"
+        italic: "斜体"
+        strikethrough: "取り消し線"
+        link: "リンク"
+        unlink: "リンク解除"
+        bullet: "リスト"
+        number: "番号付きリスト"
+        quote: "引用"
+        code: "コード"
+        heading: "見出し"
+        undo: "元に戻す"
+        redo: "やり直し"
+        attachFiles: "ファイルを添付"
+      undoRedo:
+        undo: "元に戻す"
+        redo: "やり直し"

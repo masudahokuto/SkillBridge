@@ -12,3 +12,11 @@
 <%= link_to "portfolios", new_portfolio_path %>
 
 <%= link_to "skill_tag", skill_tags_path %>
+
+<ul>
+  <% @portfolios.each do |portfolio| %>
+    <li>
+      <%= link_to portfolio.name, portfolio_path(portfolio) %> <!-- 詳細ページへのリンク -->
+    </li>
+  <% end %>
+</ul>
