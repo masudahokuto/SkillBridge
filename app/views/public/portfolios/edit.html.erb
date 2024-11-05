@@ -1,51 +1,62 @@
-<!-- app/views/public/portfolios/edit.html.erb -->
-<h1>ポートフォリオを編集</h1>
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-10">
+      <% if @portfolio.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@portfolio.errors.count, "error") %> prohibited this portfolio from being saved:</h2>
 
-<%= form_with model: @portfolio, local: true do |f| %>
-  <% if @portfolio.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@portfolio.errors.count, "error") %> prohibited this portfolio from being saved:</h2>
+          <ul>
+            <% @portfolio.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-      <ul>
-        <% @portfolio.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+      <h3>ポートフォリオを編集</h3>
+      <%= render 'skill_tag_new' %>
+      <%= form_with model: @portfolio, local: true do |f| %>
+      <%= render 'skill_tags', f: f, skill_tags: @skill_tags %>
+
+        <div class="form-group">
+          <%= f.label :portfolio_image, "ポートフォリオ画像", class: 'form-label' %>
+          <%= f.file_field :portfolio_image, class: 'form-control-file' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :name, "ポートフォリオ名" %>
+          <%= f.text_field :name, class: "form-control", required: true %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :portfolio_url, "ポートフォリオURL" %>
+          <%= f.url_field :portfolio_url, class: "form-control", required: true %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :github_link, "GitHubリンク" %>
+          <%= f.url_field :github_link, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :visibility, "公開設定" %>
+          <%= f.select :visibility, [['公開', 'is_public'], ['非公開', 'is_private'], ['フォロワーのみ公開', 'followers_only']], {}, class: "form-control" %>
+        </div>
+
+
+        <div class="form-group">
+          <%= f.label :content, "説明" %>
+          <%= f.rich_text_area :content, class: "form-control action_text-field", required: true %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit '更新', class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+
+      <%= link_to 'キャンセル', portfolio_path(@portfolio), class: 'btn btn-secondary' %>
+
+      <%= link_to "マイページ", mypage_users_path %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
   </div>
-
-  <div class="field">
-    <%= f.label :portfolio_url %>
-    <%= f.text_field :portfolio_url %>
-  </div>
-
-  <div class="field">
-    <%= f.label :github_link %>
-    <%= f.text_field :github_link %>
-  </div>
-
-  <div class="field">
-    <%= f.select :visibility, Portfolio.visibilities.keys.map { |v| [I18n.t("activerecord.attributes.portfolio.visibility.#{v}"), v] }, { include_blank: true } %>
-  </div>
-
-  <%= f.label :skill_tag_ids, "スキルタグ" %>
-  <%= render 'skill_tags', f: f %>
-
-  <div class="form-group">
-    <%= f.label :content, "説明" %>
-    <%= f.rich_text_area :content, class: "form-control action_text-field", required: true %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit '更新', class: 'btn btn-primary' %>
-  </div>
-<% end %>
-
-<%= link_to 'キャンセル', portfolio_path(@portfolio), class: 'btn btn-secondary' %>
-
-<%= link_to "マイページ", mypage_users_path %>
+</div>

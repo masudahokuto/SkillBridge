@@ -1,7 +1,18 @@
 <div class="container">
   <div class="row d-flex justify-content-center">
     <div class="col-lg-10">
-    <%= render 'skill_tag_new' %>
+      <% if @portfolio.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@portfolio.errors.count, "error") %> prohibited this portfolio from being saved:</h2>
+    
+          <ul>
+            <% @portfolio.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <%= render 'skill_tag_new' %>
       <%= form_with(model: @portfolio, local: true) do |f| %>
         <%= render 'skill_tags', f: f, skill_tags: @skill_tags %>
         <div class="form-group">

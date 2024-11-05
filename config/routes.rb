@@ -25,7 +25,11 @@ Rails.application.routes.draw do
 
     resources :user_details, only: %i[new create edit]
 
-    resources :portfolios
+    resources :portfolios do
+      member do
+        patch :toggle_visibility
+      end
+    end
 
     resources :skill_tags, only: %i[index create]
   end

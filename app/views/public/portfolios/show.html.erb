@@ -1,7 +1,35 @@
-<p>name: <%= @portfolio.name %></p>
-<p>Portfolioリンク: <%= link_to @portfolio.portfolio_url, @portfolio.portfolio_url %></p>
-<p>GitHubリンク: <%= link_to @portfolio.github_link, @portfolio.github_link %></p>
-<p>visibility: <%= I18n.t("activerecord.attributes.portfolio.visibility.#{@portfolio.visibility}") %></p>
-<%= render "portfolio_skills", portfolio: @portfolio %>
-<%= link_to 'ポートフォリオを編集', edit_portfolio_path(@portfolio), class: 'btn btn-warning' %>
-<%= link_to "マイページ", mypage_users_path, class: 'btn btn-info' %>
+<div class="container-fluid">
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-8 d-flex flex-column align-items-center">
+      <div class="portfolio-image">
+        <%= image_tag @portfolio.portfolio_image.attached? ? @portfolio.portfolio_image : 'no_image.jpg', alt: @portfolio.name, class: 'portfolio-image img-fluid mb-3' %>
+      </div>
+      <h2 class="font-weight-bold text-center">
+        <%= @portfolio.name %>
+      </h2>
+    </div>
+  </div>
+
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-8">
+      <p class="font-weight-bold">Portfolioリンク: <%= link_to @portfolio.portfolio_url, @portfolio.portfolio_url %></p>
+      <p class="font-weight-bold">GitHubリンク: <%= link_to @portfolio.github_link, @portfolio.github_link %></p>
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center">
+          <span>
+            <%= link_to '公開設定切り替え', toggle_visibility_portfolio_path(@portfolio), method: :patch, remote: true, class: 'btn btn-outline-secondary btn-sm', style: 'border-radius: 15.5px;' %>
+          </span>
+          <span id="portfolio-visibility">
+            <%= I18n.t("activerecord.attributes.portfolio.visibility.#{@portfolio.visibility}") %>
+          </span>
+        </div>
+        <div class="d-flex">
+          <span>
+            <%= link_to 'ポートフォリオを編集', edit_portfolio_path(@portfolio), class: 'btn btn-outline-dark btn-sm', style: 'border-radius: 15.5px;' %>
+          </span>
+        </div>
+      </div>
+      <%= render "portfolio_skills", portfolio: @portfolio %>
+    </div>
+  </div>
+</div>
