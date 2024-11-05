@@ -11,9 +11,23 @@ class Public::UsersController < ApplicationController
 
   def edit
     @user = current_user
+    @user.qualifications.build if @user.qualifications.empty?
   end
 
   def update
+    if params[:user][:qualifications_input].present?
+      qualifications = params[:user][:qualifications_input].split(',').map(&:strip)
+
+      qualifications.each do |qualification_name|
+        unless qualification_name.empty?
+          # 同じ資格名がすでに存在しないか確認
+          unless @user.qualifications.exists?(name: qualification_name)
+            @user.qualifications.create(name: qualification_name)
+          end
+        end
+      end
+    end
+
     if @user.update(user_params)
       redirect_to mypage_users_path, notice: 'プロフィールが更新されました'
     else
@@ -24,6 +38,7 @@ class Public::UsersController < ApplicationController
   def mypage
     @user = current_user
     @portfolios = @user.portfolios
+    @qualifications = @user.qualifications
   end
 
   private
@@ -37,7 +52,7 @@ class Public::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:nick_name, :profile, :gender, :location, :birthday, :email, :password,  :profile_image)
+    params.require(:user).permit(:nick_name, :profile, :gender, :location, :birthday, :email, :password, :work_experience, :profile_image)
   end
 
 end

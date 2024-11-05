@@ -1,12 +1,15 @@
 <div class="container-fluid">
   <div class="row d-flex justify-content-center">
-    <div class="col-lg-8 d-flex flex-column align-items-center">
+    <div class="col-lg-5 d-flex flex-column align-items-center">
       <div class="portfolio-image">
         <%= image_tag @portfolio.portfolio_image.attached? ? @portfolio.portfolio_image : 'no_image.jpg', alt: @portfolio.name, class: 'portfolio-image img-fluid mb-3' %>
       </div>
       <h2 class="font-weight-bold text-center">
         <%= @portfolio.name %>
       </h2>
+    </div>
+    <div class="col-lg-3">
+      tst
     </div>
   </div>
 

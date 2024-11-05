@@ -5,12 +5,18 @@
 <%= @user.location %>
 <%= @user.birthday %>
 <%= @user.email %>
+<%= I18n.t("activerecord.attributes.user.work_experience.#{@user.work_experience}") %>
+<% if @qualifications.any? %>
+  <ul>
+    <% @qualifications.each do |qualification| %>
+      <li><%= qualification.name %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>資格は登録されていません。</p>
+<% end %>
 
-<%= link_to "user編集", edit_user_path(@user) %>
-
-<%= link_to "portfolios", new_portfolio_path %>
-
-<%= link_to "skill_tag", skill_tags_path %>
+<%= link_to "タグ一覧", skill_tags_path %>
 
 <ul>
   <% @portfolios.each do |portfolio| %>

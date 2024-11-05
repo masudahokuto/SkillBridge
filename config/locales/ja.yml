@@ -14,6 +14,10 @@ ja:
           male: "男性"
           female: "女性"
           other: "非公開"
+        work_experience:
+          no_experience: "職務経験なし"
+          less_than_3_years: "職務経験3年未満"
+          more_than_3_years: "職務経験3年以上"
       portfolio:
         visibility:
           is_public: "公開"

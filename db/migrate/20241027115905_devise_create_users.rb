@@ -5,8 +5,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
     create_table :users do |t|
       ## Database authenticatable
       t.string :github_link
-      t.integer :level, null: false, default: 0
-      t.text :certifications
+      t.integer :work_experience, default: 0
       t.text :profile
       t.string :location, null: false
       t.string :nick_name, null: false

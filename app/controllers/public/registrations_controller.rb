@@ -51,7 +51,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   # サインアップ時に許可するパラメータの設定
   def sign_up_params
-    params.require(:user).permit(:nick_name, :profile, :gender, :birthday, :email, :password, :password_confirmation, :location)
+    params.require(:user).permit(:nick_name, :profile, :gender, :birthday, :email, :password, :password_confirmation, :location, :profile_image)
   end
 
   def redirect_if_admin_signed_in
