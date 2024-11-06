@@ -8,9 +8,39 @@
         <%= @portfolio.name %>
       </h2>
     </div>
+
     <div class="col-lg-3">
-      tst
+      <div>
+        <% if @user.profile_image.attached? %>
+          <%= link_to (current_user == @user ? mypage_users_path : user_path(@user)) do %>
+            <%= image_tag @user.profile_image, class: "profile-card-image rounded-circle", alt: "#{@user.nick_name}のプロフィール画像" %>
+          <% end %>
+        <% else %>
+          <!-- プロフィール画像がない場合のデフォルト画像 -->
+          <%= link_to (current_user == @user ? mypage_users_path : user_path(@user)) do %>
+            <%= image_tag "default_profile.png", class: "profile-card-image rounded-circle", alt: "デフォルトプロフィール画像" %>
+          <% end %>
+        <% end %>
+        <span>
+          <%= @user.nick_name %>
+        </span>
+        <span><%= I18n.t("activerecord.attributes.user.gender.#{@user.gender}") %></span>
+        <span><%= @user.location %></span>
+      </div>
+      <div><%= @user.profile %></div>
+      <div><%= I18n.t("activerecord.attributes.user.work_experience.#{@user.work_experience}") %></div>
+      <% if @qualifications.any? %>
+        <div>
+          <% @qualifications.each do |qualification| %>
+            <div><%= qualification.name %></div>
+          <% end %>
+        </div>
+      <% else %>
+        <div>資格は登録されていません。</div>
+      <% end %>
     </div>
+
+
   </div>
 
   <div class="row d-flex justify-content-center">

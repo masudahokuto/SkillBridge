@@ -18,3 +18,4 @@ ActiveStorage.start()
 
 import { trix } from "trix/dist/trix";
 import './dropdown'
+

@@ -8,7 +8,8 @@ class User < ApplicationRecord
   enum work_experience: { no_experience: 0, less_than_3_years: 1, more_than_3_years: 2 }
   has_one :user_detail, dependent: :destroy
   has_many :portfolios, dependent: :destroy
-  has_many :skill_tags, through: :usertaggings
+  has_many :user_taggings, dependent: :destroy
+  has_many :skill_tags, through: :user_taggings
   has_many :qualifications, dependent: :destroy
   accepts_nested_attributes_for :qualifications, allow_destroy: true
 end

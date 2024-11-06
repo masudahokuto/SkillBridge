@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       collection do
         get 'mypage', to: 'users#mypage'
         patch 'withdraw'  # 退会処理
+        delete 'destroy_qualification/:qualification_id', to: 'users#destroy_qualification', as: 'destroy_qualification'
       end
     end
 

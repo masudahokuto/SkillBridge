@@ -1,6 +1,6 @@
-<div class="registration-form-container">
-  <div class="row justify-content-center py-5" style="background-color: rgba(255, 255, 255, 0.6)";>
-    <div class="col-md-8 col-lg-6">
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-8">
       <% if session[:error_messages].present? %>
         <h3 class="sign_up_errors">
           <%= session[:error_messages].count %>件の入力エラーが発生しました
@@ -14,11 +14,30 @@
         </div>
         <% session.delete(:error_messages) %>
       <% end %>
+      <h2 class="text-center">
+        プロフィール編集
+      </h2>
+    </div>
+  </div>
+  <div class="row justify-content-center mb-1">
+    <div class="col-md-8 col-lg-8">
+      <div class="d-flex justify-content-center">
+        <div>
+          <%= render 'public/portfolios/skill_tag_new' %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-8">
+      <div class="card p-4 shadow-sm">
       <%= form_with model: @user, url: user_path(@user), method: :patch, local: true do |f| %>
-        <div class="card p-4 shadow-sm">
+      <%= render 'public/portfolios/skill_tags', f: f, skill_tags: @skill_tags %>
+
+
           <div class="card-body">
 
-            <h2 class="text-center mb-4">プロフィール編集</h2>
+
 
             <div class="form-group">
               <%= f.label :nick_name, "公開名", class: 'form-label' %>

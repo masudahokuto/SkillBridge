@@ -1,27 +1,72 @@
+<div class="container-fluid">
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-8">
+      <div class="my-card">
+        <div class="my-profile-set d-flex">
+          <div class="profile-image-container">
+            <%= image_tag(@user.profile_image.attached? ? @user.profile_image : 'no_image.jpg', class: 'mypage-profile-image') %>
+          </div>
+          <div class="profile-details d-flex flex-column">
+            <div class="my-nick-name p-2">
+              <%= @user.nick_name %>
+            </div>
+            <div class="my-gender p-2">
+              <%= I18n.t("activerecord.attributes.user.gender.#{@user.gender}") %>
+            </div>
+            <div class="my-location p-2">
+              <%= @user.location %>
+            </div>
+          </div>
 
-<%= @user.nick_name %>
-<%= @user.profile %>
-<%= I18n.t("activerecord.attributes.user.gender.#{@user.gender}") %>
-<%= @user.location %>
-<%= @user.birthday %>
-<%= @user.email %>
-<%= I18n.t("activerecord.attributes.user.work_experience.#{@user.work_experience}") %>
-<% if @qualifications.any? %>
-  <ul>
-    <% @qualifications.each do |qualification| %>
-      <li><%= qualification.name %></li>
-    <% end %>
-  </ul>
-<% else %>
-  <p>資格は登録されていません。</p>
-<% end %>
+          <div class="my-profile p-3">
+            <%= @user.profile %>
+          </div>
+        </div>
 
-<%= link_to "タグ一覧", skill_tags_path %>
+        <%= I18n.t("activerecord.attributes.user.work_experience.#{@user.work_experience}") %>
 
-<ul>
-  <% @portfolios.each do |portfolio| %>
-    <li>
-      <%= link_to portfolio.name, portfolio_path(portfolio) %> <!-- 詳細ページへのリンク -->
-    </li>
-  <% end %>
-</ul>
+        <% if @qualifications.any? %>
+          <ul class="d-flex flex-wrap">
+            <% @qualifications.each do |qualification| %>
+              <li id="qualification-<%= qualification.id %>" class="mr-5">
+                <%= qualification.name %>
+                <%= link_to "Ｘ", destroy_qualification_users_path(@user, qualification_id: qualification.id), method: :delete, remote: true, data: { confirm: "本当に削除しますか？", turbolinks: false }, class: "destroy-qualification text-danger" %>
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p>資格は登録されていません。</p>
+        <% end %>
+
+        <div class="form-group check-tag-all d-flex flex-wrap">
+          <% @skill_tags.each do |skill_tag| %>
+            <div class="tag-item d-flex align-items-center">
+              <div class="skill_tag d-flex align-items-center">
+                <% if skill_tag.skill_tag_image.attached? %>
+                  <%= image_tag skill_tag.skill_tag_image, class: "skill-tag-image rounded-circle", alt: skill_tag.name %>
+                <% end %>
+                <span class="form-check-label skill-tag-label ms-2"><%= skill_tag.name %></span>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-8">
+      <%= link_to "タグ一覧", skill_tags_path %>
+
+      <ul>
+        <% @portfolios.each do |portfolio| %>
+          <li>
+            <%= link_to portfolio.name, portfolio_path(portfolio), data: { turbolinks: false } %> <!-- 詳細ページへのリンク -->
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

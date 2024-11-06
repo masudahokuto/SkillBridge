@@ -12,6 +12,7 @@ class Public::UsersController < ApplicationController
   def edit
     @user = current_user
     @user.qualifications.build if @user.qualifications.empty?
+    @skill_tags = SkillTag.all
   end
 
   def update
@@ -39,6 +40,21 @@ class Public::UsersController < ApplicationController
     @user = current_user
     @portfolios = @user.portfolios
     @qualifications = @user.qualifications
+    @skill_tags = @user.skill_tags
+  end
+
+  def destroy_qualification
+    @user = current_user
+    @qualification = @user.qualifications.find(params[:qualification_id])
+
+    if @qualification.destroy
+      flash[:notice] = "資格情報が削除されました"
+    else
+      flash[:alert] = "削除に失敗しました"
+    end
+
+    # 削除後に元のページにリダイレクト
+    redirect_back(fallback_location: mypage_users_path(@user))
   end
 
   private
@@ -52,7 +68,7 @@ class Public::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:nick_name, :profile, :gender, :location, :birthday, :email, :password, :work_experience, :profile_image)
+    params.require(:user).permit(:nick_name, :profile, :gender, :location, :birthday, :email, :password, :work_experience, :profile_image, skill_tag_ids: [])
   end
 
 end

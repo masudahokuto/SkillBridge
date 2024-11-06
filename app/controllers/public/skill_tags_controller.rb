@@ -6,9 +6,9 @@ class Public::SkillTagsController < ApplicationController
   def create
     @skill_tag = SkillTag.new(skill_tag_params)
     if @skill_tag.save
-      redirect_to new_portfolio_path, notice: 'スキルタグが作成されました。'
+      redirect_back(fallback_location: root_path)
     else
-      render :new
+      redirect_back(fallback_location: root_path)
     end
   end
 

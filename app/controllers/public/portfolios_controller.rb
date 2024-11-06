@@ -7,7 +7,6 @@ class Public::PortfoliosController < ApplicationController
 
   def create
     @portfolio = current_user.portfolios.build(portfolio_params)
-    puts portfolio_params.inspect
     if @portfolio.save
       redirect_to @portfolio, notice: 'ポートフォリオが作成されました。'
     else
@@ -54,6 +53,7 @@ class Public::PortfoliosController < ApplicationController
   def show
     @portfolio = Portfolio.find(params[:id])
     @user = @portfolio.user
+    @qualifications = @user.qualifications
   end
 
   def index
