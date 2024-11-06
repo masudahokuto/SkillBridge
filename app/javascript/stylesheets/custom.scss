@@ -54,16 +54,17 @@
 }
 
 .destroy-qualification {
-  color: red;
-  border-radius: 2px;
-  border: 1px solid red;
+  color: white;
+  border-radius: 50%;
+  background-color: red;
   padding-right: 2.5px;
   padding-left: 2.5px;
 }
 
 .destroy-qualification:hover {
+  text-color: #ddd;
   text-decoration: none;
-  background-color: #e4edf4;
+  background-color: red;
 }
 
 .action_text-field {

@@ -7,13 +7,13 @@
             <%= image_tag(@user.profile_image.attached? ? @user.profile_image : 'no_image.jpg', class: 'mypage-profile-image') %>
           </div>
           <div class="profile-details d-flex flex-column">
-            <div class="my-nick-name p-2">
+            <div class="my-nick-name p-1">
               <%= @user.nick_name %>
             </div>
-            <div class="my-gender p-2">
+            <div class="my-gender p-1 my-1">
               <%= I18n.t("activerecord.attributes.user.gender.#{@user.gender}") %>
             </div>
-            <div class="my-location p-2">
+            <div class="my-location p-1">
               <%= @user.location %>
             </div>
           </div>
@@ -23,14 +23,16 @@
           </div>
         </div>
 
-        <%= I18n.t("activerecord.attributes.user.work_experience.#{@user.work_experience}") %>
+        <div class="my-work-experience p-1">
+          <%= I18n.t("activerecord.attributes.user.work_experience.#{@user.work_experience}") %>
+        </div>
 
         <% if @qualifications.any? %>
           <ul class="d-flex flex-wrap">
             <% @qualifications.each do |qualification| %>
-              <li id="qualification-<%= qualification.id %>" class="mr-5">
+              <li id="qualification-<%= qualification.id %>" class="mr-5 p-1" style="border: 1px solid #ddd; border-radius: 17px;">
                 <%= qualification.name %>
-                <%= link_to "Ｘ", destroy_qualification_users_path(@user, qualification_id: qualification.id), method: :delete, remote: true, data: { confirm: "本当に削除しますか？", turbolinks: false }, class: "destroy-qualification text-danger" %>
+                <%= link_to "Ｘ", destroy_qualification_users_path(@user, qualification_id: qualification.id), method: :delete, remote: true, data: { confirm: "本当に削除しますか？", turbolinks: false }, class: "destroy-qualification", title: "削除" %>
               </li>
             <% end %>
           </ul>
@@ -38,7 +40,7 @@
           <p>資格は登録されていません。</p>
         <% end %>
 
-        <div class="form-group check-tag-all d-flex flex-wrap">
+        <div class="d-flex flex-wrap">
           <% @skill_tags.each do |skill_tag| %>
             <div class="tag-item d-flex align-items-center">
               <div class="skill_tag d-flex align-items-center">
