@@ -206,3 +206,14 @@
 .profile-card-link:hover {
   text-decoration: none; /* ホバー時に下線を削除 */
 }
+
+.profile-card {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.nick-name {
+  font-weight: bold;
+  white-space: nowrap;
+}

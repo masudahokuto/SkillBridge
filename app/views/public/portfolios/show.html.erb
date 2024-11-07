@@ -10,7 +10,7 @@
     </div>
 
     <div class="col-lg-3">
-      <div>
+      <div class="profile-card">
         <% if @user.profile_image.attached? %>
           <%= link_to (current_user == @user ? mypage_users_path : user_path(@user)), class: "profile-card-link" do %>
             <%= image_tag @user.profile_image, class: "profile-card-image rounded-circle", alt: "#{@user.nick_name}のプロフィール画像" %>
@@ -21,11 +21,13 @@
             <%= image_tag "default_profile.png", class: "profile-card-image rounded-circle", alt: "デフォルトプロフィール画像" %>
           <% end %>
         <% end %>
-        <span>
+        <span class="nick-name">
           <%= @user.nick_name %>
         </span>
+        <div>
+          <%= @user.profile %>
+        </div>
       </div>
-      <div><%= @user.profile %></div>
     </div>
 
 
@@ -44,10 +46,15 @@
             <%= I18n.t("activerecord.attributes.portfolio.visibility.#{@portfolio.visibility}") %>
           </span>
         </div>
+        <span>
+          <%= @portfolio.created_at.strftime("%Y/%m/%d") %>
+        </span>
         <div class="d-flex">
-          <span>
-            <%= link_to 'ポートフォリオを編集', edit_portfolio_path(@portfolio), class: 'btn btn-outline-dark btn-sm', style: 'border-radius: 15.5px;' %>
-          </span>
+          <% if current_user == @portfolio.user %>
+            <span>
+              <%= link_to 'ポートフォリオを編集', edit_portfolio_path(@portfolio), class: 'btn btn-outline-dark btn-sm', style: 'border-radius: 15.5px;' %>
+            </span>
+          <% end %>
         </div>
       </div>
       <%= render "portfolio_skills", portfolio: @portfolio %>
