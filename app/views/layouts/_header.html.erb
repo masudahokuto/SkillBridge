@@ -1,18 +1,22 @@
 <header class="custom-header py-3">
   <div class="container-fluid">
     <div class="row d-flex justify-content-center">
-      <div class="col-lg-10 d-flex justify-content-between align-items-center">
-        <div>
+      <div class="col-sm-6 col-md-6 col-lg-9 d-flex flex-column flex-sm-row justify-content-between align-items-center">
+        <!-- Logo Section -->
+        <div class="mb-2 mb-sm-0">
           <%= link_to root_path, data: { turbolinks: false } do %>
             <%= image_tag 'header-logo.png', alt: 'SkillBridge Logo', class: 'header-logo me-3' %>
           <% end %>
         </div>
-        <div class="row d-flex align-items-center">
+        
+        <!-- User Options Section -->
+        <div class="row d-flex align-items-center flex-column flex-sm-row">
           <div class="search">
             <%= link_to skill_tags_path, class: "search mx-3" do %>
               <i class="fa-solid fa-magnifying-glass"></i>
             <% end %>
           </div>
+          
           <% if user_signed_in? %>
             <div class="dropdown">
               <%= image_tag(current_user.profile_image.attached? ? current_user.profile_image : 'no_image.jpg', class: 'header-profile-image', id: 'dropdownToggle') %>

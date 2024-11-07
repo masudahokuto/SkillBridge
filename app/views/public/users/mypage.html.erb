@@ -60,16 +60,30 @@
   </div>
 </div>
 
-<div class="container">
-  <div class="row d-flex justify-content-center">
-    <div class="col-lg-8">
-      <ul>
-        <% @portfolios.each do |portfolio| %>
-          <li>
-            <%= link_to portfolio.name, portfolio_path(portfolio), data: { turbolinks: false } %> <!-- 詳細ページへのリンク -->
-          </li>
+<div class="container-fluid">
+  <div class="row d-flex justify-content-center pt-5">
+    <div class="col-lg-8 d-flex flex-wrap">
+      <% @portfolios.each do |portfolio| %>
+        <%= link_to portfolio_path(portfolio), data: { turbolinks: false }, class: "portfolio-item-link col-md-4 col-sm-6 mb-4" do %>
+          <div class="portfolio-item">
+            <div class="portfolio-image-container">
+              <% if portfolio.portfolio_image.attached? %>
+                <%= image_tag portfolio.portfolio_image, class: "portfolio-image", alt: "#{portfolio.name}の画像" %>
+              <% else %>
+                <%= image_tag "default_image.png", class: "portfolio-image", alt: "デフォルト画像" %>
+              <% end %>
+            </div>
+            <div class="portfolio-name-box">
+              <div class="portfolio-name">
+                <%= portfolio.name %>
+              </div>
+              <div class="portfolio-date">
+                <%= portfolio.created_at.strftime("%Y-%m-%d") %>
+              </div>
+            </div>
+          </div>
         <% end %>
-      </ul>
+      <% end %>
     </div>
   </div>
 </div>

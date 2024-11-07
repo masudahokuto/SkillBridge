@@ -12,8 +12,16 @@
 
   <body>
     <%= render 'layouts/header' %>
-    <%= yield %>
+    <div id="flash-messages">
+      <% flash.each do |type, message| %>
+        <div class="alert alert-<%= type == 'alert' ? 'danger' : 'success' %> mb-0">
+          <%= message %>
+        </div>
+      <% end %>
+    </div>
+    <main class="py-4">
+      <%= yield %>
+    </main>
     <%= render 'layouts/footer' %>
-
   </body>
 </html>

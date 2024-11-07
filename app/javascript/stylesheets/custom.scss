@@ -1,3 +1,13 @@
+main {
+  min-height: 84vh;
+  background-color: #eceeff;
+}
+
+.custom-header,
+.custom-footer {
+  height: 75px;
+}
+
 .header-logo {
   object-fit: cover; /* 画像の比率を維持しつつ、切り取って表示 */
   display: block; /* 画像をブロック要素として表示 */
@@ -14,10 +24,10 @@
 }
 
 .my-card {
-  background-color: #fff; /* カードの背景色 */
-  border-radius: 10px; /* カードの角を丸く */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* シャドウ効果 */
+  background-color: #fff;
+  border-radius: 10px;
   padding: 1rem;
+  background-color: #fff;
 }
 
 .my-profile-set {
@@ -103,6 +113,8 @@
 }
 
 .skill-card-body {
+  border-radius: 12px;
+  background-color: #fff;
   padding: 1rem;
   text-align: center;
 }
@@ -169,6 +181,7 @@
 }
 
 .portfolio-show-content {
+  background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 12px;
   padding: 40px;
@@ -211,9 +224,65 @@
   padding: 15px;
   border: 1px solid #ddd;
   border-radius: 4px;
+  background-color: #fff;
 }
 
 .nick-name {
   font-weight: bold;
   white-space: nowrap;
+}
+
+.portfolio-item {
+  max-width: 300px;
+  height: 220px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-top: 15px;
+}
+
+.portfolio-item-link {
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+.portfolio-image-container {
+  min-height: 100px;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  font-size: 46px;
+  line-height: 1.5;
+  background: #cfe5ff;
+  align-items: center;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.portfolio-image {
+  height: 60px;
+  max-width: 150px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.portfolio-name-box {
+  background-color: white;
+  flex: 1;
+  padding: .8em;
+  border: 1px solid #dbdfff;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  color: inherit;
+}
+
+.portfolio-name {
+  font-weight: bold;
+  text-decoration: none;
+  color: inherit;
 }
