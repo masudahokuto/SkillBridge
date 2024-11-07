@@ -68,7 +68,7 @@
           <div class="portfolio-item">
             <div class="portfolio-image-container">
               <% if portfolio.portfolio_image.attached? %>
-                <%= image_tag portfolio.portfolio_image, class: "portfolio-image", alt: "#{portfolio.name}の画像" %>
+                <%= image_tag portfolio.portfolio_image, class: "portfolio-image-mypage", alt: "#{portfolio.name}の画像" %>
               <% else %>
                 <%= image_tag "default_image.png", class: "portfolio-image", alt: "デフォルト画像" %>
               <% end %>

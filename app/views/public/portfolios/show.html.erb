@@ -37,26 +37,7 @@
     <div class="col-lg-8">
       <p class="font-weight-bold">Portfolioリンク: <%= link_to @portfolio.portfolio_url, @portfolio.portfolio_url %></p>
       <p class="font-weight-bold">GitHubリンク: <%= link_to @portfolio.github_link, @portfolio.github_link %></p>
-      <div class="d-flex justify-content-between align-items-center">
-        <div class="d-flex align-items-center">
-          <span>
-            <%= link_to '公開設定切り替え', toggle_visibility_portfolio_path(@portfolio), method: :patch, remote: true, class: 'btn btn-outline-secondary btn-sm', style: 'border-radius: 15.5px;' %>
-          </span>
-          <span id="portfolio-visibility">
-            <%= I18n.t("activerecord.attributes.portfolio.visibility.#{@portfolio.visibility}") %>
-          </span>
-        </div>
-        <span>
-          <%= @portfolio.created_at.strftime("%Y/%m/%d") %>
-        </span>
-        <div class="d-flex">
-          <% if current_user == @portfolio.user %>
-            <span>
-              <%= link_to 'ポートフォリオを編集', edit_portfolio_path(@portfolio), class: 'btn btn-outline-dark btn-sm', style: 'border-radius: 15.5px;' %>
-            </span>
-          <% end %>
-        </div>
-      </div>
+
       <%= render "portfolio_skills", portfolio: @portfolio %>
     </div>
   </div>
