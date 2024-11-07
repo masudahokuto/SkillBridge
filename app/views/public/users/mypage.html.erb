@@ -24,26 +24,29 @@
         </div>
 
         <div class="my-work-experience p-1">
-          <%= I18n.t("activerecord.attributes.user.work_experience.#{@user.work_experience}") %>
+          エンジニア職務経験：<%= I18n.t("activerecord.attributes.user.work_experience.#{@user.work_experience}") %>
         </div>
-
-        <% if @qualifications.any? %>
-          <ul class="d-flex flex-wrap">
-            <% @qualifications.each do |qualification| %>
-              <li id="qualification-<%= qualification.id %>" class="mr-5 p-1" style="border: 1px solid #ddd; border-radius: 17px;">
-                <%= qualification.name %>
-                <%= link_to "Ｘ", destroy_qualification_users_path(@user, qualification_id: qualification.id), method: :delete, remote: true, data: { confirm: "本当に削除しますか？", turbolinks: false }, class: "destroy-qualification", title: "削除" %>
-              </li>
-            <% end %>
-          </ul>
-        <% else %>
-          <p>資格は登録されていません。</p>
-        <% end %>
-
+        <div class="my-qualifications mb-2">
+          <div class="qualifications-text">取得資格：</div>
+          <% if @qualifications.any? %>
+            <div class="d-flex flex-wrap mb-0">
+              <% @qualifications.each do |qualification| %>
+                <div id="qualification-<%= qualification.id %>" class="mr-2 p-1" style="border: 1px solid #ddd; border-radius: 17px;">
+                  <%= qualification.name %>
+                  <%= link_to "Ｘ", destroy_qualification_users_path(@user, qualification_id: qualification.id), method: :delete, remote: true, data: { confirm: "本当に削除しますか？", turbolinks: false }, class: "destroy-qualification", title: "削除" %>
+                </div>
+              <% end %>
+            </div>
+          <% else %>
+            <p>資格は登録されていません。</p>
+          <% end %>
+        </div>
+       <div class="d-flex align-items-center mb-2">
+        <div>タグ：</div>
         <div class="d-flex flex-wrap">
           <% @skill_tags.each do |skill_tag| %>
             <div class="tag-item d-flex align-items-center">
-              <div class="skill_tag d-flex align-items-center">
+              <div class="skill_tag d-flex align-items-center mr-2">
                 <% if skill_tag.skill_tag_image.attached? %>
                   <%= image_tag skill_tag.skill_tag_image, class: "skill-tag-image rounded-circle", alt: skill_tag.name %>
                 <% end %>
@@ -60,8 +63,6 @@
 <div class="container">
   <div class="row d-flex justify-content-center">
     <div class="col-lg-8">
-      <%= link_to "タグ一覧", skill_tags_path %>
-
       <ul>
         <% @portfolios.each do |portfolio| %>
           <li>
