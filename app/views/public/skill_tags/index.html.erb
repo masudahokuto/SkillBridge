@@ -2,16 +2,18 @@
   <div class="row d-flex justify-content-center">
     <div class="CardList">
       <% @skill_tags.each do |tag| %>
-        <div class="skill-card" style="width: 10rem;">
-          <div class="skill-card-body">
-            <% if tag.skill_tag_image.attached? %>
-              <%= image_tag tag.skill_tag_image, class: "skill-card-image", alt: tag.name %>
-            <% else %>
-              <p class="card-text">No image attached</p>
-            <% end %>
-            <div class="skill-card-title"><%= tag.name %></div>
+        <%= link_to portfolios_path(skill_tag_id: tag.id), data: { turbolinks: false }, class: "skill-card-link" do %>
+          <div class="skill-card" style="width: 10rem;">
+            <div class="skill-card-body">
+              <% if tag.skill_tag_image.attached? %>
+                <%= image_tag tag.skill_tag_image, class: "skill-card-image", alt: tag.name %>
+              <% else %>
+                <p class="card-text">No image attached</p>
+              <% end %>
+              <div class="skill-card-title"><%= tag.name %></div>
+            </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
     </div>
   </div>

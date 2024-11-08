@@ -232,8 +232,18 @@ main {
   white-space: nowrap;
 }
 
+.skill-card-link {
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
 .portfolio-item {
-  max-width: 300px;
+  max-width: 320px;
   height: 220px;
   display: flex;
   flex: 1;

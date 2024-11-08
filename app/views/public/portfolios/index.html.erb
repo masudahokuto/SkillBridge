@@ -1,2 +1,6 @@
-<h1>Portfolios#index</h1>
-<p>Find me in app/views/portfolios/index.html.erb</p>
+<h2>ポートフォリオ一覧</h2>
+
+<% if @skill_tag.present? %>
+  <p>表示中のタグ: <%= @skill_tag.name %></p>
+<% end %>
+<%= render "portfolio_cards", portfolios: @portfolios %>
