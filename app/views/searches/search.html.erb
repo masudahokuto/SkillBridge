@@ -1,8 +1,6 @@
 <div class="container-fluid">
   <div class="row d-flex justify-content-center">
     <div class="col-lg-8">
-  
-      <h2>検索結果</h2>
       <%= render "searches/search_form" %>
     </div>
   </div>
@@ -10,6 +8,12 @@
   <% if @portfolios.any? %>
     <%= render "public/portfolios/portfolio_cards", portfolios: @portfolios %>
   <% else %>
-    <p>一致するポートフォリオが見つかりませんでした。</p>
+    <div class="container-fluid">
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-8 d-flex justify-content-center">
+          一致するポートフォリオが見つかりませんでした。
+        </div>
+      </div>
+    </div>  
   <% end %>
 </div>

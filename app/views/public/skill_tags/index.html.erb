@@ -1,20 +1,31 @@
 <div class="container-fluid">
   <div class="row d-flex justify-content-center">
-    <div class="CardList">
-      <% @skill_tags.each do |tag| %>
-        <%= link_to portfolios_path(skill_tag_id: tag.id), data: { turbolinks: false }, class: "skill-card-link" do %>
-          <div class="skill-card" style="width: 10rem;">
-            <div class="skill-card-body">
-              <% if tag.skill_tag_image.attached? %>
-                <%= image_tag tag.skill_tag_image, class: "skill-card-image", alt: tag.name %>
-              <% else %>
-                <p class="card-text">No image attached</p>
-              <% end %>
-              <div class="skill-card-title"><%= tag.name %></div>
-            </div>
-          </div>
+    <div class="col-lg-8">
+      
+      <div class="mb-3">
+        <%= form_with url: skill_tags_path, method: :get, local: true, id: "search-form" do %>
+          <%= label_tag :query, "タグを検索", class: "form-label" %>
+          <%= text_field_tag :query, params[:query], class: "form-control", id: "search-input", placeholder: "タグ名を入力" %>
         <% end %>
-      <% end %>
+      </div>
+
+
+      <div class="CardList">
+        <% @skill_tags.each do |tag| %>
+          <%= link_to portfolios_path(skill_tag_id: tag.id), data: { turbolinks: false }, class: "skill-card-link", id: "tag-#{tag.id}" do %>
+            <div class="skill-card" style="width: 10rem;">
+              <div class="skill-card-body">
+                <% if tag.skill_tag_image.attached? %>
+                  <%= image_tag tag.skill_tag_image, class: "skill-card-image", alt: tag.name %>
+                <% else %>
+                  <p class="card-text">No image attached</p>
+                <% end %>
+                <div class="skill-card-title"><%= tag.name %></div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

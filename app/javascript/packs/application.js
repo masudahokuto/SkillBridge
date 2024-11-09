@@ -18,5 +18,6 @@ ActiveStorage.start()
 
 
 import { trix } from "trix/dist/trix";
-import './dropdown'
-
+import './dropdown';
+import './tag_skill';
+import "./submit_prevention";
