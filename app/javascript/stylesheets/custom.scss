@@ -6,6 +6,8 @@ main {
 .custom-header,
 .custom-footer {
   min-height: 75px;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
 }
 
 .header-logo {
@@ -25,6 +27,7 @@ main {
   color: black;
 }
 
+.tag-card,
 .my-card {
   background-color: #fff;
   border-radius: 10px;
@@ -32,11 +35,17 @@ main {
   background-color: #fff;
 }
 
+.tag-set {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .my-profile-set {
   display: flex;
-  flex-direction: row; /* 横並びにする */
-  align-items: center; /* 画像とテキストの縦揃え */
-  margin-bottom: 2rem; /* 画像とテキストの間に余白 */
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 2rem;
 }
 
 .my-nick-name {
@@ -58,6 +67,12 @@ main {
   align-items: center;
 }
 
+.tag-name {
+  font-weight: bold;
+  font-size: 1.9rem;
+  line-height: 1.4;
+}
+
 .header-profile-image {
   width: 40px;
   height: 40px;
@@ -65,11 +80,13 @@ main {
   cursor: pointer;
 }
 
+.tag-details,
 .profile-details {
   display: flex;
   align-items: flex-start;
 }
 
+.tag-image,
 .mypage-profile-image {
   width: 120px;
   height: 120px;
