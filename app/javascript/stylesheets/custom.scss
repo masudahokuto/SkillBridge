@@ -5,7 +5,7 @@ main {
 
 .custom-header,
 .custom-footer {
-  height: 75px;
+  min-height: 75px;
 }
 
 .header-logo {
@@ -14,12 +14,14 @@ main {
   margin: 0 auto; /* 中央に配置するためのマージン設定 */
 }
 
-.fa-magnifying-glass {
+.fa-file,
+.fa-tags {
   color: #65717b;
   font-size: 30px;
 }
 
-.fa-magnifying-glass:hover {
+.fa-file:hover,
+.fa-tags:hover {
   color: black;
 }
 
@@ -284,7 +286,9 @@ main {
 .portfolio-name-box {
   background-color: white;
   flex: 1;
-  padding: .8em;
+  padding-right: .8em;
+  padding-left: .8em;
+  padding-bottom: .8em;
   border: 1px solid #dbdfff;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;

@@ -4,15 +4,21 @@
       <div class="col-sm-6 col-md-6 col-lg-9 d-flex flex-column flex-sm-row justify-content-between align-items-center">
         <!-- Logo Section -->
         <div class="mb-2 mb-sm-0">
-          <%= link_to root_path, data: { turbolinks: false } do %>
+          <%= link_to root_path, data: { turbolinks: false }, title: "home" do %>
             <%= image_tag 'header-logo.png', alt: 'SkillBridge Logo', class: 'header-logo me-3' %>
           <% end %>
         </div>
 
         <div class="row d-flex align-items-center flex-column flex-sm-row">
+          <div class="page">
+            <%= link_to portfolios_path, data: { turbolinks: false }, class: "page", title: "ポートフォリオ一覧" do %>
+              <i class="fa-regular fa-file"></i>
+            <% end %>
+          </div>
+
           <div class="search">
-            <%= link_to skill_tags_path, data: { turbolinks: false }, class: "search mx-3" do %>
-              <i class="fa-solid fa-magnifying-glass"></i>
+            <%= link_to skill_tags_path, data: { turbolinks: false }, class: "search mx-3", title: "タグ一覧" do %>
+              <i class="fa-solid fa-tags"></i>
             <% end %>
           </div>
 

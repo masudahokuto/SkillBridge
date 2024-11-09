@@ -12,11 +12,21 @@
               <% end %>
             </div>
             <div class="portfolio-name-box">
+              <div class="d-flex justify-content-center">
+                <div class="portfolio-date">
+                  <%= portfolio.created_at.strftime("%Y-%m-%d") %>
+                </div>
+              </div>
               <div class="portfolio-name">
                 <%= portfolio.name %>
               </div>
-              <div class="portfolio-date">
-                <%= portfolio.created_at.strftime("%Y-%m-%d") %>
+              <div class="d-flex align-items-center pt-2" style="border-top: 1px solid #ddd;">
+                <div>
+                  <%= image_tag portfolio.user.profile_image, class: "header-profile-image" %>
+                </div>
+                <div>
+                  <%= portfolio.user.nick_name %>
+                </div>
               </div>
             </div>
           </div>
