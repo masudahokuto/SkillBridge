@@ -34,5 +34,7 @@ Rails.application.routes.draw do
 
     resources :skill_tags, only: %i[index create]
   end
+  
+  get 'searches', to: 'searches#search'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
