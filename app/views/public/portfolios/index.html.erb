@@ -2,7 +2,7 @@
   <div class="row d-flex justify-content-center">
     <div class="col-lg-8">
       <% if @skill_tag.present? %>
-        <div class="tag-card">
+        <div class="tag-card mb-5">
           <div class="tag-set d-flex">
             <div class="tag-image-container">
               <%= image_tag(@skill_tag.skill_tag_image.attached? ? @skill_tag.skill_tag_image : 'no_image.jpg', class: 'tag-image') %>

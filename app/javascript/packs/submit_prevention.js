@@ -3,10 +3,12 @@ document.addEventListener("DOMContentLoaded", function() {
   const searchForm = document.getElementById("search-form");
   const searchInput = document.getElementById("search-input");
 
-  // エンターキーでフォームを送信しないようにする
-  searchForm.addEventListener("keydown", function(event) {
-    if (event.key === "Enter") {
-      event.preventDefault(); // エンターキーによる送信を無効にする
-    }
-  });
+  // searchFormが存在する場合のみエンターキーによる送信を無効にする
+  if (searchForm) {
+    searchForm.addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        event.preventDefault(); // エンターキーによる送信を無効にする
+      }
+    });
+  }
 });

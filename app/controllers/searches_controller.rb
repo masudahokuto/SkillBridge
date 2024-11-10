@@ -1,10 +1,11 @@
 class SearchesController < ApplicationController
   def search
-    @portfolios = if params[:query].present?
-                    Portfolio.where("name LIKE ?", "%#{params[:query]}%")
-                  else
-                    Portfolio.all
-                  end
+    @portfolios = Portfolio.all
+
+    if params[:query].present?
+      @portfolios = @portfolios.joins(:user).where("portfolios.name LIKE ? OR users.nick_name LIKE ?", "%#{params[:query]}%", "%#{params[:query]}%")
+    end
+
     render "search"
   end
 end

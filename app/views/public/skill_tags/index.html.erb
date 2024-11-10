@@ -1,15 +1,21 @@
 <div class="container-fluid">
   <div class="row d-flex justify-content-center">
-    <div class="col-lg-8">
-      
+    <div class="col-lg-7">
       <div class="mb-3">
         <%= form_with url: skill_tags_path, method: :get, local: true, id: "search-form" do %>
-          <%= label_tag :query, "タグを検索", class: "form-label" %>
-          <%= text_field_tag :query, params[:query], class: "form-control", id: "search-input", placeholder: "タグ名を入力" %>
+          <div class="form-group position-relative" style="margin-top: 4px; margin-bottom: 0px !important;">
+            <i class="fas fa-search position-absolute" style="left: 10px; top: 50%; transform: translateY(-50%); color: #aaa;"></i>
+            <%= text_field_tag :query, params[:query], class: "form-control pl-5", id: "search-input", placeholder: "タグを絞り込み" %>
+          </div>
         <% end %>
       </div>
+    </div>
+  </div>
+</div>
 
-
+<div class="container-fluid">
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-8 d-flex justify-content-center">
       <div class="CardList">
         <% @skill_tags.each do |tag| %>
           <%= link_to portfolios_path(skill_tag_id: tag.id), data: { turbolinks: false }, class: "skill-card-link", id: "tag-#{tag.id}" do %>
