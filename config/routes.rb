@@ -30,11 +30,10 @@ Rails.application.routes.draw do
       member do
         patch :toggle_visibility
       end
+      resources :favorites, only: %i[create destroy]
     end
 
     resources :skill_tags, only: %i[index create]
   end
-  
   get 'searches', to: 'searches#search'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

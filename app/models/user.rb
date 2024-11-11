@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :user_taggings, dependent: :destroy
   has_many :skill_tags, through: :user_taggings
   has_many :qualifications, dependent: :destroy
+  has_many :favorites
+  has_many :favorite_portfolios, through: :favorites, source: :portfolio
   accepts_nested_attributes_for :qualifications, allow_destroy: true
 end
 

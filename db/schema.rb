@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_11_05_134653) do
+ActiveRecord::Schema.define(version: 2024_11_11_090007) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -80,6 +80,15 @@ ActiveRecord::Schema.define(version: 2024_11_05_134653) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_companies_on_email", unique: true
     t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "portfolio_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["portfolio_id"], name: "index_favorites_on_portfolio_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "portfolio_taggings", force: :cascade do |t|
@@ -161,6 +170,8 @@ ActiveRecord::Schema.define(version: 2024_11_05_134653) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "favorites", "portfolios"
+  add_foreign_key "favorites", "users"
   add_foreign_key "portfolio_taggings", "portfolios"
   add_foreign_key "portfolio_taggings", "skill_tags"
   add_foreign_key "portfolios", "users"
