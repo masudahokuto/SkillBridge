@@ -1,7 +1,7 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [:show, :edit, :update]
-  before_action :redirect_if_not_current_user, only: [:edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :likes]
+  before_action :redirect_if_not_current_user, only: [:edit, :update, :likes]
 
   def index
   end
@@ -10,7 +10,6 @@ class Public::UsersController < ApplicationController
   end
 
   def edit
-    @user = current_user
     @user.qualifications.build if @user.qualifications.empty?
     @skill_tags = SkillTag.all
   end
@@ -57,6 +56,10 @@ class Public::UsersController < ApplicationController
     redirect_back(fallback_location: mypage_users_path(@user))
   end
 
+  def likes
+    @portfolios = @user.favorite_portfolios
+  end
+
   private
 
   def set_user
@@ -64,7 +67,7 @@ class Public::UsersController < ApplicationController
   end
 
   def redirect_if_not_current_user
-    redirect_to posts_path unless current_user == @user
+    redirect_to portfolios_path unless current_user == @user
   end
 
   def user_params

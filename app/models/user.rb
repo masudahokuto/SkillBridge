@@ -11,8 +11,16 @@ class User < ApplicationRecord
   has_many :user_taggings, dependent: :destroy
   has_many :skill_tags, through: :user_taggings
   has_many :qualifications, dependent: :destroy
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
   has_many :favorite_portfolios, through: :favorites, source: :portfolio
   accepts_nested_attributes_for :qualifications, allow_destroy: true
+
+  def favorite(portfolio)
+    favorites.find_or_create_by(portfolio_id: portfolio.id)
+  end
+
+  def favorited_by?(portfolio)
+    favorites.exists?(portfolio_id: portfolio.id)
+  end
 end
 

@@ -22,6 +22,9 @@ Rails.application.routes.draw do
         patch 'withdraw'  # 退会処理
         delete 'destroy_qualification/:qualification_id', to: 'users#destroy_qualification', as: 'destroy_qualification'
       end
+      member do
+        get '/likes' => 'users#likes'
+      end
     end
 
     resources :user_details, only: %i[new create edit]

@@ -57,6 +57,7 @@ class Public::PortfoliosController < ApplicationController
   end
 
   def index
+    @user = current_user
     if params[:skill_tag_id].present?
       @skill_tag = SkillTag.find(params[:skill_tag_id])
       @portfolios = @skill_tag.portfolios
