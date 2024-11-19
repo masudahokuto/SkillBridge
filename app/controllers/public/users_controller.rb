@@ -57,7 +57,7 @@ class Public::UsersController < ApplicationController
   end
 
   def likes
-    @portfolios = @user.favorite_portfolios
+    @portfolios = current_user.favorite_portfolios.includes(:user)
   end
 
   private
