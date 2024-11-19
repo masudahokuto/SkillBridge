@@ -4,13 +4,19 @@ class Public::FavoritesController < ApplicationController
   def create
     @portfolio = Portfolio.find(params[:portfolio_id])
     current_user.favorite(@portfolio)
-    redirect_to request.referer, notice: "ポートフォリオにいいねしました。"
+    respond_to do |format|
+      format.html { redirect_to request.referer }
+      format.js
+    end
   end
 
   def destroy
     @portfolio = Portfolio.find(params[:portfolio_id])
     favorite = current_user.favorites.find_by(portfolio_id: @portfolio.id)
     favorite&.destroy
-    redirect_to request.referer, notice: "いいねを解除しました。"
+    respond_to do |format|
+      format.html { redirect_to request.refere }
+      format.js
+    end
   end
 end

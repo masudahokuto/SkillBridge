@@ -7,4 +7,6 @@ class Portfolio < ApplicationRecord
   has_many :favorites
   has_many :favorited_by_users, through: :favorites, source: :user
   enum visibility: { is_public: 0, is_private: 1, followers_only: 2 }
+
+  default_scope { order(created_at: :desc) }
 end

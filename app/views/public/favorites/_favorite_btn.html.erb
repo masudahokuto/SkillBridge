@@ -1,0 +1,11 @@
+<div class="like-button">
+  <% if current_user.favorited_by?(portfolio) %>
+    <%= link_to portfolio_favorite_path(portfolio, current_user.favorites.find_by(portfolio: @portfolio)), method: :delete, remote: true, class: 'btn', data: { turbolinks: false } do %>
+      <i class="fas fa-heart" style="color: red;"></i> <%= portfolio.favorites.count %>
+    <% end %>
+  <% else %>
+    <%= link_to portfolio_favorites_path(portfolio), method: :post, remote: true, class: 'btn', data: { turbolinks: false } do %>
+      <i class="far fa-heart" style="color: gray;"></i> <%= portfolio.favorites.count %>
+    <% end %>
+  <% end %>
+</div>

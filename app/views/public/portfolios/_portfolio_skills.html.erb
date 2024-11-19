@@ -2,23 +2,26 @@
   <div class="d-flex justify-content-between align-items-center mb-2">
     <div class="d-flex align-items-center">
       <span>
-        <% if current_user == @portfolio.user %>
-          <%= link_to '公開設定切り替え', toggle_visibility_portfolio_path(@portfolio), method: :patch, remote: true, class: 'btn btn-outline-secondary btn-sm', style: 'border-radius: 15.5px;' %>
+        <% if current_user == portfolio.user %>
+          <%= link_to '公開設定切り替え', toggle_visibility_portfolio_path(portfolio), method: :patch, remote: true, class: 'btn btn-outline-secondary btn-sm', style: 'border-radius: 15.5px;' %>
         <% end %>
       </span>
       <span id="portfolio-visibility">
-        <%= I18n.t("activerecord.attributes.portfolio.visibility.#{@portfolio.visibility}") %>
+        <%= I18n.t("activerecord.attributes.portfolio.visibility.#{portfolio.visibility}") %>
       </span>
     </div>
     <span>
-      <%= @portfolio.created_at.strftime("%Y/%m/%d") %>
+      <%= portfolio.created_at.strftime("%Y/%m/%d") %>
     </span>
     <div class="d-flex">
-      <% if current_user == @portfolio.user %>
+      <% if current_user == portfolio.user %>
         <span>
-          <%= link_to 'ポートフォリオを編集', edit_portfolio_path(@portfolio), class: 'btn btn-outline-dark btn-sm', style: 'border-radius: 15.5px;' %>
+          <%= link_to 'ポートフォリオを編集', edit_portfolio_path(portfolio), class: 'btn btn-outline-dark btn-sm', style: 'border-radius: 15.5px;' %>
         </span>
       <% end %>
+
+      <%= render "public/favorites/favorite_btn", portfolio: @portfolio %>
+
     </div>
   </div>
   <div class="form-group check-tag-all d-flex flex-wrap">

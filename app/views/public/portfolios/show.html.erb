@@ -37,18 +37,6 @@
       <p class="font-weight-bold">Portfolioリンク: <%= link_to @portfolio.portfolio_url, @portfolio.portfolio_url %></p>
       <p class="font-weight-bold">GitHubリンク: <%= link_to @portfolio.github_link, @portfolio.github_link %></p>
 
-      <div class="like-button">
-        <% if current_user.favorited_by?(@portfolio) %>
-          <!-- いいね解除ボタン -->
-          <%= link_to 'いいね解除', portfolio_favorite_path(@portfolio, current_user.favorites.find_by(portfolio: @portfolio)),
-              method: :delete, class: 'btn btn-danger' %>
-        <% else %>
-          <!-- いいねボタン -->
-          <%= link_to 'いいね', portfolio_favorites_path(@portfolio),
-              method: :post, class: 'btn btn-primary' %>
-        <% end %>
-      </div>
-
       <%= render "portfolio_skills", portfolio: @portfolio %>
     </div>
   </div>
